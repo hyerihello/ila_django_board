@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row mt-5">
+  <div class="col-12 text-center">
+    <h1>
+      My Private Board
+    </h1>
+  </div>
+</div>
+{% if request.session.user %}
+<div class="row mt-5">
+    <div class="col-12 text-center">
+    <button type="button" class="btn btn-info btn-lg btn-block" onclick="location.href='/board/list/'">
+      Go to Board
+    </button>
+  </div>
+</div>
+<div class="row mt-2">
+  <div class="col-12 text-center">
+    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="location.href='/member/logout/'">
+      Logout
+    </button>
+  </div>
+</div>
+{% else %}
+<div class="row mt-5">
+  <div class="col-12 text-center">
+    <button type="button" class="btn btn-primary btn-lg btn-block"  onclick="location.href='/member/login/'" >
+      SignIn
+    </button>
+  </div>
+</div>
+<div class="row mt-2">
+  <div class="col-12 text-center">
+    <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href='/member/register/'">
+      SignUp
+    </button>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

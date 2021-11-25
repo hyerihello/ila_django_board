@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row mt-5">
+      <div class="col-12 text-center">
+        <br/>
+        <h1>MyBoard Login Page</h1>
+        <div class="row mt-5">
+            {{errors}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-12 text-left">
+         <form method="POST" action=".">
+           {% csrf_token %}
+
+      {% for field in form %}
+           <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            <input
+              type="{{ field.field.widget.input_type }}"
+              class="form-control"
+              id="{{ field.id_for_label }}"
+              placeholder="{{ field.label }}"
+              name="{{ field.name }}"
+            />
+            <br/>
+          </div>
+          <!-- 유효성검사 -->
+          {% if field.errors %}
+          <span style="color: red;">{{ field.errors }}</span>
+          {% endif %} 
+          {% endfor %}
+            <br/>
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

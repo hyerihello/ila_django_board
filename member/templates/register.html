@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row mt-5">
+      <div class="col-12 text-center">
+        <br/>
+        <h1>MyBoard Join Page</h1>
+        <div class="row mt-5">
+          <div class="col-12">
+            {{error}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- 
+    Http method :: post 
+    회원 가입을 하는 사용자 데이터를 전달하는데 POST 방식을 사용하므로 
+    form method에 표시해주고 현재 주소에 action 할거라는 의미로 . 표기
+    생략해도 현재 page에 post요청을 한다.
+    
+    아래에 {% csrf_token %} 를 작성
+    장고 튜토리얼에도 있지만 폼이 데이터를 서버에 전달 하는데 보안 위험 요소가 있어서 
+    위 코드를 작성해 넣어줘야 한다. 이렇게 하면 자동으로 암호화된 키를 숨겨 놓는다.
+    장고가 알아서 검증해 주도록 하는 장치 라고 생각하면 된다. 안 쓰면 에러가 난다.
+    -->
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-12 text-left">
+         <form method="POST" action=".">
+           {% csrf_token %}
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                placeholder="username"
+                name="username"
+              />
+              <br/>
+            </div>
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="email"
+                name="email"
+              />
+              <br/>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="password"
+                name="password"
+              />
+              <br/>
+            </div>
+            <div class="form-group">
+              <label for="re_password">Re-Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="re_password"
+                placeholder="re_password"
+                name="re_password"
+              />
+              <br/>
+            </div>
+            <br/>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

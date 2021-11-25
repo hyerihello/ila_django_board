@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row mt-5">
+  <div class="col-12 text-center">
+    <br/>
+    <h1> Myboard Details </h1>
+  </div>
+</div>
+
+
+<div class="row mt-5">
+  <div class="col-12">
+    
+    <div class="form-group">
+       <label for="title">제목</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        value="{{ board.title }}"
+        readonly
+      />
+      <br/>
+      <label for="contents">내용</label>
+      <textarea class="form-control" id="content" readonly>{{ board.contents }}</textarea>
+    </div>
+    <br/>
+    <button class="btn btn-primary" onclick="location.href='/board/list/'">돌아가기</button>
+    <button class="btn btn-primary" id = 'edit' value = "수정" >수정하기</button>
+    
+    <button class="btn btn-primary" id = 're_edit' value = "수정완료" style="display:none">수정완료</button>
+
+
+    
+  </form>
+  </div>
+</div>
+<script>
+  document.querySelector('#edit').addEventListener('click', e =>{
+    let title = document.querySelector('#title');
+    let content = document.querySelector('#content');
+
+    let btnSubmit = document.querySelector('#edit');
+    let btnUpdate = document.querySelector('#re_edit');
+
+    title.readOnly = false;
+    content.readOnly = false;
+
+    btnSubmit.style.display = 'inline-block';
+    btnUpdate.style.display = 'none';
+
+    
+      
+
+   /*  const deleteBoard = id => {
+      location.href = '/delete/${id}';
+    } */
+  })
+</script>
+{% endblock %}
