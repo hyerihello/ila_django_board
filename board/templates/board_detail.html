@@ -11,7 +11,6 @@
 
 <div class="row mt-5">
   <div class="col-12">
-    
     <div class="form-group">
        <label for="title">제목</label>
       <input
@@ -28,9 +27,11 @@
     <br/>
     <button class="btn btn-primary" onclick="location.href='/board/list/'">돌아가기</button>
     <button class="btn btn-primary" id = 'edit' value = "수정" >수정하기</button>
+    <a href="{% url 'update' board.id %}">update</a>
+    <button class="btn btn-primary" onclick="location.href='/board/detail/{{ board.pk }}/delete/'">삭제하기</button>
     
-    <button class="btn btn-primary" id = 're_edit' value = "수정완료" style="display:none">수정완료</button>
-
+    
+    <!-- <a href="/board/detail/{{ board.pk }}/delete/">delete</a> -->
 
     
   </form>

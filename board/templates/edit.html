@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row mt-5">
+  <div class="col-12 text-center">
+    <br/>
+    <h1> MyBoard edit </h1>
+  </div>
+</div>
+
+<div class="row mt-5">
+  <div class="col-12">
+    <form action="{% url 'update' board.pk %}" method = "POST">
+    {% csrf_token %}
+    <div class="form-group">
+       <label for="title">제목</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        value="{{ board.title }}"
+      />
+      <br/>
+      <label for="contents">내용</label>
+      <textarea class="form-control" id="contents">{{ board.contents }}</textarea>
+    </div>
+    <br/>
+      
+     
+      <input class="btn btn-primary" type="submit" 
+      value="수정하기" onclick="location.href='/edit/{{board.pk}}/'">
+  
+    </form>
+  </div>
+</div>
+</div>
+{% endblock %}

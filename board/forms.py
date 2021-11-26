@@ -11,3 +11,7 @@ class BoardForm(forms.Form):
     contents = forms.CharField(
         error_messages={'required': '내용을 입력하세요.'}, 
         widget=forms.Textarea, label="게시글 내용")
+
+    class Meta:
+        model = Board
+        fields = ['title', 'contents', 'writer']

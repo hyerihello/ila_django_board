@@ -6,5 +6,8 @@ urlpatterns = [
     path('list/', views.board_list),
     path('write/', views.board_write),
     path('detail/<int:pk>/', views.board_detail),
-    
+    # -------- edit-update, delete
+    path('detail/<int:pk>/delete/',views.delete),
+    #path('detail/<int:pk>/edit/', views.edit),
+    path('update/<int:pk>/', views.update, name="update"),
 ]

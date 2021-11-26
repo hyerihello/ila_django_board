@@ -34,7 +34,7 @@ def board_write(request):
             user_id = request.session.get('user')
             member = BoardMember.objects.get(pk=user_id)
             
-            board = Board()
+            board = Board() #모델 클래스 변수 집어넣기
             board.title     = form.cleaned_data['title']
             board.contents  = form.cleaned_data['contents']
             # 검증에 성공한 값들은 사전타입으로 제공 (form.cleaned_data)
@@ -65,4 +65,28 @@ def board_detail(request, pk):
     return render(request, 'board_detail.html', {'board':board})
     # {'board':board} 로 템플릿에 전달해 준다.
 
-    
+def delete(request,pk):
+    board = Board.objects.get(pk=pk)
+    board.delete()
+    return redirect('/board/list/')
+
+
+def update(request, pk):
+    board = Board.objects.get(pk=pk)
+    if request.method == "POST": 
+        board.title = request.POST["title"]
+        board.contents = request.POST["contents"]
+
+        """ board.title = request.POST.get("title", False)
+        board.contents = request.POST.get("contents", False) """
+
+        board.save()
+        return redirect('/board/list/', board.pk)
+
+    return render(request, 'edit.html', {"board" : board})
+
+
+
+
+
+
