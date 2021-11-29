@@ -14,4 +14,4 @@ class BoardForm(forms.Form):
 
     class Meta:
         model = Board
-        fields = ['title', 'contents', 'writer']
+        fields = '__all__'

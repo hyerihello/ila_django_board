@@ -76,10 +76,6 @@ def update(request, pk):
     if request.method == "POST": 
         board.title = request.POST["title"]
         board.contents = request.POST["contents"]
-
-        """ board.title = request.POST.get("title", False)
-        board.contents = request.POST.get("contents", False) """
-
         board.save()
         return redirect('/board/list/', board.pk)
 
